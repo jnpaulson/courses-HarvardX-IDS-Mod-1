@@ -144,3 +144,98 @@ msg3 = "There`s no specificaton of 1 to 1000 for sum. Try again."
 msg4 = "Sum doesn't work with one number."
 test_mc(correct = 2, feedback_msgs = c(msg1,msg2,msg3,msg4))
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:b202a5ef86
+## Nested function calls 1
+
+In math and programming we say we evaluate a function when we replace the argument with a given number. So if we type `log2(16)` we evaluate the `log2` function to get the log to the base 2 of `16` which is `4`. 
+
+In R it is often useful to evaluate a function inside another function. 
+For example, `sqrt(log2(16))` will calculate the log to the base 2 of 16 and then compute the square root of that value. So the first evaluation  gives a 4 and this gets evaluated by `sqrt` to give the final answer of 2.
+
+*** =instructions
+
+Use one line of code to compute the log, to the base 10, of the square root of 100.
+
+*** =hint
+
+The sqrt function comes before the log function in this case. 
+
+*** =pre_exercise_code
+```{r}
+# no pec
+
+```
+
+*** =sample_code
+```{r}
+# log to the base 2 
+log2(16)
+
+# sqrt of the log to the base 2 of 16:
+sqrt(log2(16))
+
+# Compute log to the base 10 of the sqrt of 100
+
+```
+
+*** =solution
+```{r}
+# log to the base 2 
+log2(16)
+
+# sqrt of the log to the base 2 of 16:
+sqrt(log2(16))
+
+# Compute log to the base 10 of the sqrt of 100
+log10(sqrt(100))
+
+```
+
+*** =sct
+```{r}
+test_output_contains ("log10(sqrt(100))", times = 1, incorrect_msg = "Make sure you mentioned the base and put the sqrt function in parenthesis.")
+test_error() 
+success_msg("Very good!")
+
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:3587747ea0
+## Nested functions call 2
+
+Which of the following will always return the numeric value stored in `x`? You can try out examples and use the help system in the R console.
+
+*** =instructions
+- `log(10^x)`
+- `log10(x^10)`
+- `log(exp(x))`
+- `exp(log(x, base = 2))`
+
+*** =hint
+
+The question asks you about the numeric value of `x`, not the log of anything. 
+
+*** =pre_exercise_code
+```{r}
+# no pec
+```
+
+*** =sct
+```{r}
+msg1 = "Try again! Read the question again."
+msg2 = "Try again! Read the question carefully."
+msg3 = "Well done. Proceed to the next exercise"
+msg4 = "Try again! Check what the question is asking for"
+test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
+```
+
+--- type:VideoExercise lang:r xp:0 skills:1 key:9bcc7f4fc9
+## End of Section
+
+
+
+This is the end of the programming assignment for this section. 
+
+You can now close this window to go back to the <a href='https://courses.edx.org/courses/course-v1:HarvardX+PH125.1x+2T2017/courseware/cfded5c208bc4e379606cb712cc54f25/5ba06674d0be41b99185b947e09e889b/?child=first'>course</a>.
+
+If you want to continue the assessments without watching the videos, you can click on the arrow above to get the next exercise or hit Ctrl-K.
