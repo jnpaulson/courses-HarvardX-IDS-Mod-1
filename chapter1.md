@@ -233,7 +233,6 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 ## End of Section
 
 
-
 This is the end of the programming assignment for this section. 
 
 You can now close this window to go back to the course.
