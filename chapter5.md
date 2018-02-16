@@ -1,3 +1,3 @@
 ---
-title       : Insert the chapter title here
-description : Insert the chapter description here
+title       : Summarizing with dplyr
+description : dplyr, The Dot Placeholder, Group By, Sorting Data Tables

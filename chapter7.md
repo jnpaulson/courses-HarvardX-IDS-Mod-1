@@ -1,3 +1,3 @@
 ---
-title       : Insert the chapter title here
-description : Insert the chapter description here
+title       : Using the Gapminder Dataset
+description : Faceting, Time Series Plots, Transformations, Stratify and Boxplot, Comparing Distributions, Density Plots, Ecological Fallacy
