@@ -31,6 +31,11 @@ female <- heights$height[heights$sex=="Female"]
 
 *** =solution
 ```{r}
+library(dslabs)
+data(heights)
+male <- heights$height[heights$sex=="Male"]
+female <- heights$height[heights$sex=="Female"]
+
 length(male)
 length(female)
 ```
@@ -68,9 +73,209 @@ female <- heights$height[heights$sex=="Female"]
 
 *** =solution
 ```{r}
+library(dslabs)
+data(heights)
+male <- heights$height[heights$sex=="Male"]
+female <- heights$height[heights$sex=="Female"]
+
 female_percentiles <- quantile(female, seq(0.1, 0.9, 0.2))
 male_percentiles <- quantile(male, seq(0.1, 0.9, 0.2))
 data.frame(female_percentiles, male_percentiles)    
+```
+
+*** =sct
+```{r}
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:1305c717d1
+## Quantiles
+
+Study the following boxplots showing us populations sizes by country:
+
+Which continent has the country with the biggest population size?
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(tidyverse)
+library(dslabs)
+ds_theme_set()
+data(gapminder)
+tab <- gapminder %>% filter(year == 2010) %>% group_by(continent) %>% select(continent, population)  
+tab %>% ggplot(aes(x=continent, y=population/10^6)) + geom_boxplot() + scale_y_continuous(trans = "log10", breaks = c(1,10,100,1000)) + ylab("Population in millions")
+```
+
+*** =sample_code
+```{r}
+library(tidyverse)
+library(dslabs)
+ds_theme_set()
+data(gapminder)
+tab <- gapminder %>% filter(year == 2010) %>% group_by(continent) %>% select(continent, population)  
+tab %>% ggplot(aes(x=continent, y=population/10^6)) + geom_boxplot() + scale_y_continuous(trans = "log10", breaks = c(1,10,100,1000)) + ylab("Population in millions")
+```
+
+*** =solution
+```{r}
+library(tidyverse)
+library(dslabs)
+ds_theme_set()
+data(gapminder)
+tab <- gapminder %>% filter(year == 2010) %>% group_by(continent) %>% select(continent, population)  
+tab %>% ggplot(aes(x=continent, y=population/10^6)) + geom_boxplot() + scale_y_continuous(trans = "log10", breaks = c(1,10,100,1000)) + ylab("Population in millions")
+cat("Asia")
+```
+
+*** =sct
+```{r}
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:473fe736e1
+## Quantiles
+
+What continent has the largest median population size?
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+library(tidyverse)
+library(dslabs)
+ds_theme_set()
+data(gapminder)
+tab <- gapminder %>% filter(year == 2010) %>% group_by(continent) %>% select(continent, population)  
+tab %>% ggplot(aes(x=continent, y=population/10^6)) + geom_boxplot() + scale_y_continuous(trans = "log10", breaks = c(1,10,100,1000)) + ylab("Population in millions")
+```
+
+*** =solution
+```{r}
+cat("Africa")
+```
+
+*** =sct
+```{r}
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:2481169bf1
+## Quantiles
+
+What is the median population size for Africa to the nearest million? 
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(tidyverse)
+library(dslabs)
+ds_theme_set()
+data(gapminder)
+tab <- gapminder %>% filter(year == 2010) %>% group_by(continent) %>% select(continent, population)  
+tab %>% ggplot(aes(x=continent, y=population/10^6)) + geom_boxplot() + scale_y_continuous(trans = "log10", breaks = c(1,10,100,1000)) + ylab("Population in millions")
+```
+
+*** =sample_code
+```{r}
+library(tidyverse)
+library(dslabs)
+ds_theme_set()
+data(gapminder)
+tab <- gapminder %>% filter(year == 2010) %>% group_by(continent) %>% select(continent, population)  
+tab %>% ggplot(aes(x=continent, y=population/10^6)) + geom_boxplot() + scale_y_continuous(trans = "log10", breaks = c(1,10,100,1000)) + ylab("Population in millions")
+```
+
+*** =solution
+```{r}
+library(tidyverse)
+library(dslabs)
+ds_theme_set()
+data(gapminder)
+tab <- gapminder %>% filter(year == 2010) %>% group_by(continent) %>% select(continent, population)  
+tab %>% ggplot(aes(x=continent, y=population/10^6)) + geom_boxplot() + scale_y_continuous(trans = "log10", breaks = c(1,10,100,1000)) + ylab("Population in millions")
+
+cat("10-15 is acceptable") 
+##we can check with     
+##round(median(tab$population[tab$continent=="Africa"]/10^6,),-1)
+```
+
+*** =sct
+```{r}
+
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:242558837d
+## Quantiles
+
+What proportion of countries in Europe have populations below 14 million?
+
+  A. 0.99
+  B. 0.75
+  C. 0.50
+  D. 0.25
+  
+ANSWER IS B
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:0ff5833c3f
+## Quantiles
+
+If we use a log transformation, which continent shown below has the largest interquartile range?
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+cat("Americas")
 ```
 
 *** =sct

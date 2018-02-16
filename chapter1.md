@@ -29,6 +29,10 @@ x <- heights$height[heights$sex=="Male"]
 
 *** =solution
 ```{r}
+library(dslabs)
+data(heights)
+x <- heights$height[heights$sex=="Male"]
+
 mean(x>69 & x<=71)
 ```
 
@@ -65,6 +69,10 @@ x <- heights$height[heights$sex=="Male"]
 
 *** =solution
 ```{r}
+library(dslabs)
+data(heights)
+x <- heights$height[heights$sex=="Male"]
+
 avg <- mean(x)
 stdev <- sd(x)
 pnorm(71, avg, stdev) - pnorm(69, avg, stdev)
@@ -101,6 +109,10 @@ x <- heights$height[heights$sex=="Male"]
 
 *** =solution
 ```{r}
+library(dslabs)
+data(heights)
+x <- heights$height[heights$sex=="Male"]
+
 exact <- mean(x>79 & x<=81)
 approx <- pnorm(81, avg, stdev) - pnorm(79, avg, stdev)
 exact/approx
