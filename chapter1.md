@@ -1,240 +1,264 @@
 ---
-title                : R Basics 
-description          : In this course we introduce you to the basics of computing and analyzing data in the user-friendly and helpful R interface. This first chapter starts with the very basics of functions, objects to get us acquainted with the world of R. 
+title                : Introduction to Distributions
+description          : In this course we introduce you to the basics of data visualization and distributions.
 
---- type:NormalExercise lang:r xp:100 skills:1 key:29d7d854a3
-## Using variables 1
+--- type:NormalExercise lang:r xp:100 skills:1 key:3cceaa1c24
+## Normal Distributions - Averages
 
-What is the sum of the first $n$ positive integers? 
-
-We can use the formula $ n(n+1)/2 $ to quickly compute this quantity.
-
-
+What proportion of the data is between 69 and 72 inches (taller than 69 but shorter or equal to 72)? Hint: a logical operator and `mean`.
 
 *** =instructions
-Define 'n=100' and then use R to compute the sum of 1 through 100 using the given formula.What is the sum?
+1. Load the height data set and create a vector `x` with just the male heights:
+
 
 *** =hint
-Follow the sample code in the editor.
 
 *** =pre_exercise_code
 ```{r}
-# no pec
+library(dslabs)
+data(heights)
+x <- heights$height[heights$sex=="Male"]
 ```
 
 *** =sample_code
 ```{r}
-# Here is how you compute the sum for the first 20 integers
-20*(20+1)/2 
+library(dslabs)
+data(heights)
+x <- heights$height[heights$sex=="Male"]
+```
 
-# However, we can define a variable to use the formula for other values of n
-n <- 20
-n*(n+1)/2
+*** =solution
+```{r}
+mean(x>69 & x<=71)
+```
 
-n <- 25
-n*(n+1)/2
+*** =sct
+```{r}
 
-# Below, write your code to calculate the sum of the first 100 integers 
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:52231e7964
+## Normal Distributions - Approximations
+
+Suppose all you know about the data is the average and the standard deviation. Use the normal approximation to estimate the proportion you just calculated.
+
+
+*** =instructions
+
+*** =hint
+Hint: Start by computing the average and standard deviation. Then use the `pnorm` function to predict the proportions.
+
+*** =pre_exercise_code
+```{r}
+library(dslabs)
+data(heights)
+x <- heights$height[heights$sex=="Male"]
+```
+
+*** =sample_code
+```{r}
+library(dslabs)
+data(heights)
+x <- heights$height[heights$sex=="Male"]
+```
+
+*** =solution
+```{r}
+avg <- mean(x)
+stdev <- sd(x)
+pnorm(71, avg, stdev) - pnorm(69, avg, stdev)
+```
+
+*** =sct
+```{r}
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:2c9c2604b9
+## Normal Distributions - Actual vs. Approximation
+
+Notice that the approximation calculated in question 2 is very close to the exact calculation in the first question. Now perform the same task for more extreme values. Compare the exact calculation and the normal approximation for the interval (79,81). How many times bigger is the actual proportion than the approximation?
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(dslabs)
+data(heights)
+x <- heights$height[heights$sex=="Male"]
+```
+
+*** =sample_code
+```{r}
+library(dslabs)
+data(heights)
+x <- heights$height[heights$sex=="Male"]
+```
+
+*** =solution
+```{r}
+exact <- mean(x>79 & x<=81)
+approx <- pnorm(81, avg, stdev) - pnorm(79, avg, stdev)
+exact/approx
+```
+
+*** =sct
+```{r}
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:4ef61be5bd
+## Normal Distributions - Seven footers
+
+Approximate the distribution of adult men in the world as normally distributed with an average of 69 inches and a standard deviation of 3 inches. Using this approximation, estimate the proportion of adult men that are 7 foot tall or taller, referred to as _seven footers_. 
+
+
+*** =instructions
+
+*** =hint
+Hint: use the `pnorm` function.
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
 
 ```
 
 *** =solution
 ```{r}
-# Define the n to be 100 then calculate the sum with the formula
-n <- 100
-n*(n+1)/2 
-```
-
-*** =sct
-```{r}
-# first instruction  
-test_object("n", incorrect_msg = "Make sure that you use `n` as your variable name and that you have assigned the correct value to `n`.")
-
-# General 
-test_error() 
-success_msg("Good job ! Let`s apply this to another question")
-```
-
---- type:NormalExercise lang:r xp:100 skills:1 key:6e9fb0d5c1
-## Using variables 2
-
-
-*** =instructions
-
-Use the same formula as the first question to compute the sum of the integers from 1 through 1,000:
-
-*** =hint
-
-Same formula as the last exercise 
-
-*** =pre_exercise_code
-```{r}
-# no pec
-```
-
-*** =sample_code
-```{r}
-# Below, write you code to calculate the sum of the first 1000 integers 
-```
-
-*** =solution
-```{r}
-# Below, write you code to calculate the sum of the first 1000 integers 
-n <- 1000
-n*(n+1)/2
-
+1 - pnorm(7*12, 68, 3)
 ```
 
 *** =sct
 ```{r}
 
-# first instruction  
-test_object("n", incorrect_msg = "Something is wrong with `n`. Make sure you have assigned the correct value to `n`.")
-
-# second instruction
-test_output_contains ("(n*(n+1)/2)", incorrect_msg = "Take a look at your code for the second instruction.")
-
-# General 
-test_error() 
-success_msg("Good job ! Let`s get to work on another question!")
 ```
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:62e2b41d87
-## Functions
+--- type:NormalExercise lang:r xp:100 skills:1 key:cbf2bae861
+## Normal Distributions - Proportion
 
-
-Run the following code in the R console:
-
-```{r, eval=FALSE}
-n <- 1000
-x <- seq(1,n)
-sum(x)
-```
-
-Based on the result, what do you think the functions `seq` and `sum` do? You can use the help system:
-
+There are about 1 billion men between the ages of 18 and 40 in the world. Use your answer to the previous question to estimate how many of these men (18-40 year olds) are seven feet tall or taller in the world?
+    
+    
 *** =instructions
-
-- sum creates a list of numbers and seq adds them up. 
-- seq creates a list of numbers and sum adds them up. 
-- seq computes the difference between two arguments and sum computes the sum of 1 through 1000. 
-- sum always returns the same number
 
 *** =hint
 
-What do the words seq and sum mean generally?
-
 *** =pre_exercise_code
 ```{r}
-# no pec
-```
-
-*** =sample_code
-```{r}
-n <- 1000
-x <- seq(1,n)
-sum(x)
-```
-
-*** =sct
-```{r}
-msg1 = "Try again! Think about the meaning of the words."
-msg2 = "Well done. Proceed to the next exercise"
-msg3 = "There`s no specificaton of 1 to 1000 for sum. Try again."
-msg4 = "Sum doesn't work with one number."
-test_mc(correct = 2, feedback_msgs = c(msg1,msg2,msg3,msg4))
-```
-
---- type:NormalExercise lang:r xp:100 skills:1 key:b202a5ef86
-## Nested function calls 1
-
-In math and programming we say we evaluate a function when we replace the argument with a given number. So if we type `log2(16)` we evaluate the `log2` function to get the log to the base 2 of `16` which is `4`. 
-
-In R it is often useful to evaluate a function inside another function. 
-For example, `sqrt(log2(16))` will calculate the log to the base 2 of 16 and then compute the square root of that value. So the first evaluation  gives a 4 and this gets evaluated by `sqrt` to give the final answer of 2.
-
-*** =instructions
-
-Use one line of code to compute the log, to the base 10, of the square root of 100.
-
-*** =hint
-
-The sqrt function comes before the log function in this case. 
-
-*** =pre_exercise_code
-```{r}
-# no pec
 
 ```
 
 *** =sample_code
 ```{r}
-# log to the base 2 
-log2(16)
-
-# sqrt of the log to the base 2 of 16:
-sqrt(log2(16))
-
-# Compute log to the base 10 of the sqrt of 100
 
 ```
 
 *** =solution
 ```{r}
-# log to the base 2 
-log2(16)
-
-# sqrt of the log to the base 2 of 16:
-sqrt(log2(16))
-
-# Compute log to the base 10 of the sqrt of 100
-log10(sqrt(100))
-
+p <- 1 - pnorm(7*12, 68, 3)
+round(p * 1.5*10^9)
 ```
 
 *** =sct
 ```{r}
-test_output_contains ("log10(sqrt(100))", times = 1, incorrect_msg = "Make sure you mentioned the base and put the sqrt function in parenthesis.")
-test_error() 
-success_msg("Very good!")
 
 ```
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:3587747ea0
-## Nested functions call 2
+--- type:NormalExercise lang:r xp:100 skills:1 key:fb137e234c
+## Normal Distributions 
 
-Which of the following will always return the numeric value stored in `x`? You can try out examples and use the help system in the R console.
+There are about 10 National Basketball Association (NBA) players that are 7 feet tall or higher. Using the answer to the previous two questions, what proportion of the world's 18 to 40 year old seven footers are in the NBA?
+
 
 *** =instructions
-- `log(10^x)`
-- `log10(x^10)`
-- `log(exp(x))`
-- `exp(log(x, base = 2))`
 
 *** =hint
 
-The question asks you about the numeric value of `x`, not the log of anything. 
-
 *** =pre_exercise_code
 ```{r}
-# no pec
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+p <- 1 - pnorm(7*12, 68, 3)
+N <- round(p * 1.5*10^9)
+10/N
 ```
 
 *** =sct
 ```{r}
-msg1 = "Try again! Read the question again."
-msg2 = "Try again! Read the question carefully."
-msg3 = "Well done. Proceed to the next exercise"
-msg4 = "Try again! Check what the question is asking for"
-test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
+
 ```
 
---- type:VideoExercise lang:r xp:0 skills:1 key:9bcc7f4fc9
-## End of Section
+--- type:NormalExercise lang:r xp:100 skills:1 key:0d53db0266
+## Normal Distributions
+
+Repeat the calculations performed in the previous question for Lebron James' height: 6 feet 8 inches. There are about 150 players that are that tall.
 
 
-This is the end of the programming assignment for this section. 
+*** =instructions
 
-You can now close this window to go back to the course.
+*** =hint
 
-If you want to continue the assessments without watching the videos, you can click on the arrow above to get the next exercise or hit Ctrl-K.
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+p <- 1 - pnorm(6*12 + 8, 68, 3)
+N <- round(p * 1.5*10^9)
+150/N
+```
+
+*** =sct
+```{r}
+
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:83e1526689
+## Normal Distribtions
+
+In answering the previous questions, we found that it is not at all rare for a seven footer to become an NBA player. What would be a fair critique of our calculations:
+
+    A. Practice and talent are what make a great basketball player, not height.
+    B. The normal approximation is not appropriate for heights.
+    C. As seen in question 3, the normal approximation tends to underestimate the extreme values. It's possible that there are more seven footers than we predicted.
+    D. As seen in question 3, the normal approximation tends to overestimate the extreme values. It's possible that there are less seven footers than we predicted.
+    
+(C) is the answer
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
