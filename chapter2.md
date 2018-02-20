@@ -46,7 +46,7 @@ length(female)
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b66abf907d
-## Quantiles
+## Quantiles 2
 
 Suppose we can't make a plot and want to compare the distributions side by side. We can't just list all the numbers. Instead we will look at the percentiles. Create a five row table showing `female_percentiles` and `male_percentiles` with the 10th, 30th, 50th, ..., 90th percentiles for each sex. Then create a data frame with these two as columns.
 
@@ -89,7 +89,7 @@ data.frame(female_percentiles, male_percentiles)
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:1305c717d1
-## Quantiles
+## Quantiles 3
 
 Study the following boxplots showing us populations sizes by country:
 
@@ -137,7 +137,7 @@ cat("Asia")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:473fe736e1
-## Quantiles
+## Quantiles 4
 
 What continent has the largest median population size?
 
@@ -171,7 +171,7 @@ cat("Africa")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:2481169bf1
-## Quantiles
+## Quantiles 5
 
 What is the median population size for Africa to the nearest million? 
 
@@ -218,7 +218,7 @@ cat("10-15 is acceptable")
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:242558837d
-## Quantiles
+## Quantiles 6
 
 What proportion of countries in Europe have populations below 14 million?
 
@@ -272,7 +272,7 @@ cat("B")
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:0ff5833c3f
-## Quantiles
+## Quantiles 7
 
 If we use a log transformation, which continent shown below has the largest interquartile range?
 

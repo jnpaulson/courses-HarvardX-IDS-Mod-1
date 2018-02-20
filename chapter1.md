@@ -186,7 +186,7 @@ round(p * 1.5*10^9)
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:fb137e234c
-## Normal Distributions 
+## Normal Distributions - Ranges
 
 There are about 10 National Basketball Association (NBA) players that are 7 feet tall or higher. Using the answer to the previous two questions, what proportion of the world's 18 to 40 year old seven footers are in the NBA?
 
@@ -218,7 +218,7 @@ N <- round(p * 1.5*10^9)
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:0d53db0266
-## Normal Distributions
+## Normal Distributions - Review
 
 Repeat the calculations performed in the previous question for Lebron James' height: 6 feet 8 inches. There are about 150 players that are that tall.
 
@@ -250,7 +250,7 @@ N <- round(p * 1.5*10^9)
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:83e1526689
-## Normal Distribtions
+## Normal Distributions - Overview
 
 In answering the previous questions, we found that it is not at all rare for a seven footer to become an NBA player. What would be a fair critique of our calculations:
 
