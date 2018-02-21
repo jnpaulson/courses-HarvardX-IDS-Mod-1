@@ -231,7 +231,7 @@ test_mc(1, c(msg1, msg2, msg3, msg4))
 
 Define variables containing the heights of males and females like this.
 
-How many measurements do we have for each?
+
 
 *** =instructions
 
