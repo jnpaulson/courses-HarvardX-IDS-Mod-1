@@ -1,7 +1,231 @@
 ---
-title       : Quantiles, Percentiles, and Boxplots
+title       : Data Types and Quantiles, Percentiles, and Boxplots
 description : Quantile-Quantile Plots, Percentiles, Boxplots, Distribution of Female Heights
 
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:e70afa5dad
+## Variable names
+
+Variable names can be useful for remembering as well as referenced from data frames.
+
+Load the motivating data example using the code:
+
+```{r}
+library(dslabs)
+data(heights)
+```
+
+*** =instructions
+
+What are the two variable names within the `heights` dataset?
+
+*** =hint
+Use the `names` function.
+
+*** =pre_exercise_code
+```{r}
+library(dslabs)
+data(heights)
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+names(heights)
+```
+
+*** =sct
+```{r}
+test_error()
+test_output_contains("names(heights)", incorrect_msg = "Are you calling the function on the correct dataset?")
+test_function("names", incorrect_msg = "You should be using a specific function to grab the names of the heights dataset")
+success_msg("Nice work!")
+```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:e6b1d336ad
+## Variable type
+
+The type of the first variable is from the previous exercise?
+
+Rerun the code if you need help remembering:
+```{r}
+library(dslabs)
+data(heights)
+names(heights)
+```
+
+*** =instructions
+- Continuous
+- Categorical
+- Ordinal
+- None of the above
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(dslabs)
+data(heights)
+names(heights)
+```
+
+*** =sct
+```{r}
+msg1 = "Incorrect. Looking at the correct variable?"
+msg2 = "Correct! Good Job"
+msg3 = "Incorrect. Try again!"
+msg4 = "Incorrect. It is one of the above"
+test_mc(2, c(msg1, msg2, msg3, msg4))
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:7ea8b2ef03
+## Numerical values
+
+Use the `unique` and `length` function in R to determine how many unique heights were reported.
+
+*** =instructions
+Report the number of unique heights.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(dslabs)
+data(heights)
+```
+
+*** =sample_code
+```{r}
+library(dslabs)
+data(heights)
+```
+
+*** =solution
+```{r}
+library(dslabs)
+data(heights)
+length(unique(heights$height))
+```
+
+*** =sct
+```{r}
+test_error()
+test_output_contains("139", incorrect_msg = "Are you calling the function on the correct dataset?")
+test_function("unique", incorrect_msg = "You should be using unique for this exercise")
+test_function("length", incorrect_msg = "You should be using length for this exercise")
+success_msg("Nice work!")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:2047247be5
+## Tables
+
+Use the `table` function to create an object, call it `tab`, that tells how often each value of height was reported.
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(dslabs)
+data(heights)
+```
+
+*** =sample_code
+```{r}
+library(dslabs)
+data(heights)
+```
+
+*** =solution
+```{r}
+library(dslabs)
+data(heights)
+tab <- table(heights$height)
+```
+
+*** =sct
+```{r}
+test_error()
+test_object("tab", incorrect_msg = "Are you calling the `table` function on the correct dataset?")
+test_function("table", incorrect_msg = "You should be using table for this exercise")
+success_msg("Nice work!")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:89f473fdd1
+## Indicator variables
+
+How many values were reported exactly once?
+
+
+*** =instructions
+Report the sum of values reported exactly once.
+
+*** =hint
+Use the function `sum` to count the number of times entries in `tab` are equal to 1.
+
+*** =pre_exercise_code
+```{r}
+library(dslabs)
+data(heights)
+tab <- table(heights$height)
+```
+
+*** =sample_code
+```{r}
+library(dslabs)
+data(heights)
+```
+
+*** =solution
+```{r}
+library(dslabs)
+data(heights)
+tab <- table(heights$height)
+sum(tab==1)
+```
+
+*** =sct
+```{r}
+test_error()
+test_output_contains("sum(tab==1)", incorrect_msg = "Are you calling the `sum` function on the table you created?")
+test_function("sum", incorrect_msg = "You should be using `sum` function for this exercise")
+success_msg("Nice work!")
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:ce3b6a5f17
+## Data types - heights
+
+Since there are a finite number of reported heights and technically the height can be considered ordinal, which of the following is true:
+
+*** =instructions
+- It is more effective to consider heights to be numerical given the number of unique values we observe and even more we can potentially observe.
+- It is actually preferable to consider heights ordinal since on a computer there are only a finite number of possibilities
+- This is actually a categorical variable: tall, medium or short.
+- This is a numerical variable because numbers are used to represent it.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg1 = "Correct!  Good Job!"
+msg2 = "Incorrect. Try again"
+msg3 = "Incorrect. Try again"
+msg4 = "Incorrect. Try again"
+test_mc(1, c(msg1, msg2, msg3, msg4))
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:56141be397
 ## Quantiles
 
