@@ -1,33 +1,42 @@
 ---
-title                : Introduction to Distributions
-description          : In this course we introduce you to the basics of data visualization and distributions.
+title: 'Introduction to Distributions'
+description: 'In this course we introduce you to the basics of data visualization and distributions.'
+free_preview: true
+---
 
---- type:NormalExercise lang:r xp:100 skills:1 key:3cceaa1c24
 ## Normal Distributions - Averages
+
+```yaml
+type: NormalExercise
+key: 3cceaa1c24
+lang: r
+xp: 100
+skills: 1
+```
 
 What proportion of the data is between 69 and 72 inches (taller than 69 but shorter or equal to 72)? Hint: a logical operator and `mean`.
 
-*** =instructions
+`@instructions`
 1. Load the height data set and create a vector `x` with just the male heights:
 
+`@hint`
 
-*** =hint
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 library(dslabs)
 data(heights)
 x <- heights$height[heights$sex=="Male"]
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 library(dslabs)
 data(heights)
 x <- heights$height[heights$sex=="Male"]
 ```
 
-*** =solution
+`@solution`
 ```{r}
 library(dslabs)
 data(heights)
@@ -36,38 +45,46 @@ x <- heights$height[heights$sex=="Male"]
 mean(x>69 & x<=71)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 
 ```
 
+---
 
---- type:NormalExercise lang:r xp:100 skills:1 key:52231e7964
 ## Normal Distributions - Approximations
+
+```yaml
+type: NormalExercise
+key: 52231e7964
+lang: r
+xp: 100
+skills: 1
+```
 
 Suppose all you know about the data is the average and the standard deviation. Use the normal approximation to estimate the proportion you just calculated.
 
+`@instructions`
 
-*** =instructions
 
-*** =hint
+`@hint`
 Hint: Start by computing the average and standard deviation. Then use the `pnorm` function to predict the proportions.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 library(dslabs)
 data(heights)
 x <- heights$height[heights$sex=="Male"]
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 library(dslabs)
 data(heights)
 x <- heights$height[heights$sex=="Male"]
 ```
 
-*** =solution
+`@solution`
 ```{r}
 library(dslabs)
 data(heights)
@@ -78,36 +95,46 @@ stdev <- sd(x)
 pnorm(71, avg, stdev) - pnorm(69, avg, stdev)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:2c9c2604b9
+---
+
 ## Normal Distributions - Actual vs. Approximation
+
+```yaml
+type: NormalExercise
+key: 2c9c2604b9
+lang: r
+xp: 100
+skills: 1
+```
 
 Notice that the approximation calculated in question 2 is very close to the exact calculation in the first question. Now perform the same task for more extreme values. Compare the exact calculation and the normal approximation for the interval (79,81). How many times bigger is the actual proportion than the approximation?
 
+`@instructions`
 
-*** =instructions
 
-*** =hint
+`@hint`
 
-*** =pre_exercise_code
+
+`@pre_exercise_code`
 ```{r}
 library(dslabs)
 data(heights)
 x <- heights$height[heights$sex=="Male"]
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 library(dslabs)
 data(heights)
 x <- heights$height[heights$sex=="Male"]
 ```
 
-*** =solution
+`@solution`
 ```{r}
 library(dslabs)
 data(heights)
@@ -118,139 +145,187 @@ approx <- pnorm(81, avg, stdev) - pnorm(79, avg, stdev)
 exact/approx
 ```
 
-*** =sct
+`@sct`
 ```{r}
 
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:4ef61be5bd
+---
+
 ## Normal Distributions - Seven footers
 
-Approximate the distribution of adult men in the world as normally distributed with an average of 69 inches and a standard deviation of 3 inches. Using this approximation, estimate the proportion of adult men that are 7 foot tall or taller, referred to as _seven footers_. 
+```yaml
+type: NormalExercise
+key: 4ef61be5bd
+lang: r
+xp: 100
+skills: 1
+```
+
+Approximate the distribution of adult men in the world as normally distributed with an average of 69 inches and a standard deviation of 3 inches. Using this approximation, estimate the proportion of adult men that are 7 foot tall or taller, referred to as _seven footers_.
+
+`@instructions`
 
 
-*** =instructions
-
-*** =hint
+`@hint`
 Hint: use the `pnorm` function.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 1 - pnorm(7*12, 68, 3)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:cbf2bae861
+---
+
 ## Normal Distributions - Proportion
 
+```yaml
+type: NormalExercise
+key: cbf2bae861
+lang: r
+xp: 100
+skills: 1
+```
+
 There are about 1 billion men between the ages of 18 and 40 in the world. Use your answer to the previous question to estimate how many of these men (18-40 year olds) are seven feet tall or taller in the world?
-    
-    
-*** =instructions
 
-*** =hint
+`@instructions`
 
-*** =pre_exercise_code
+
+`@hint`
+
+
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 p <- 1 - pnorm(7*12, 68, 3)
 round(p * 1.5*10^9)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:fb137e234c
+---
+
 ## Normal Distributions - Ranges
+
+```yaml
+type: NormalExercise
+key: fb137e234c
+lang: r
+xp: 100
+skills: 1
+```
 
 There are about 10 National Basketball Association (NBA) players that are 7 feet tall or higher. Using the answer to the previous two questions, what proportion of the world's 18 to 40 year old seven footers are in the NBA?
 
+`@instructions`
 
-*** =instructions
 
-*** =hint
+`@hint`
 
-*** =pre_exercise_code
+
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 p <- 1 - pnorm(7*12, 68, 3)
 N <- round(p * 1.5*10^9)
 10/N
 ```
 
-*** =sct
+`@sct`
 ```{r}
 
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:0d53db0266
+---
+
 ## Normal Distributions - Review
+
+```yaml
+type: NormalExercise
+key: 0d53db0266
+lang: r
+xp: 100
+skills: 1
+```
 
 Repeat the calculations performed in the previous question for Lebron James' height: 6 feet 8 inches. There are about 150 players that are that tall.
 
+`@instructions`
 
-*** =instructions
 
-*** =hint
+`@hint`
 
-*** =pre_exercise_code
+
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 p <- 1 - pnorm(6*12 + 8, 68, 3)
 N <- round(p * 1.5*10^9)
 150/N
 ```
 
-*** =sct
+`@sct`
 ```{r}
 
 ```
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:83e1526689
+---
+
 ## Normal Distributions - Overview
+
+```yaml
+type: MultipleChoiceExercise
+key: 83e1526689
+lang: r
+xp: 50
+skills: 1
+```
 
 In answering the previous questions, we found that it is not at all rare for a seven footer to become an NBA player. What would be a fair critique of our calculations:
 
@@ -261,16 +336,18 @@ In answering the previous questions, we found that it is not at all rare for a s
     
 (C) is the answer
 
-*** =instructions
+`@possible_answers`
 
-*** =hint
 
-*** =pre_exercise_code
+`@hint`
+
+
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sct
+`@sct`
 ```{r}
 
 ```
